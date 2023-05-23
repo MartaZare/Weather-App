@@ -13,7 +13,7 @@
   gap: 16px;
 }
 
-@media only screen and (max-width: 381px) {
+@media only screen and (max-width: 421px) {
   .weeksCards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
