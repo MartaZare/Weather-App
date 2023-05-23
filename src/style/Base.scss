@@ -1,0 +1,29 @@
+@import "../style/Variables.scss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  min-height: $space-all;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  background-image: url("../assets/background.jpg");
+  background-position: center;
+  background-size: cover;
+  width: $space-all;
+  min-height: $space-all;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

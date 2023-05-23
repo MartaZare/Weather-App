@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+.card {
+  background-color: #ffffff;
+  font-family: "Quicksand", sans-serif;
+  width: 8em;
+  height: 8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card > h1 {
+  font-weight: 400;
+}
+
+.card > p {
+  color: rgb(12, 139, 207);
+}
+
+.today-card {
+  width: 16em;
+  height: 16em;
+}
+
+.today-card > h1 {
+  font-size: 70px;
+}
+
+.today-card > p {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 361px) {
+  .card {
+    width: 6.5em;
+    height: 6.5em;
+  }
+  .card > h1 {
+    font-weight: 300;
+    font-size: 30px;
+  }
+  .card > p {
+    font-size: 15px;
+  }
+  .today-card {
+    width: 14em;
+    height: 14em;
+  }
+  .today-card > h1 {
+    font-size: 60px;
+  }
+  .today-card > p {
+    font-size: 30px;
+    font-weight: 200;
+  }
+}/*# sourceMappingURL=Card.css.map */

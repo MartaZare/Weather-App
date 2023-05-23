@@ -1,0 +1,26 @@
+@import "../style/Variables.scss";
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  min-height: $space-all;
+}
+
+.weeksCards {
+  width: $space-all;
+  display: flex;
+  gap: 16px;
+}
+
+@media only screen and (max-width: 361px) {
+  .weeksCards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .content,
+  .weeksCards {
+    gap: 15px;
+  }
+}
