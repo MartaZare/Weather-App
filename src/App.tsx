@@ -4,19 +4,22 @@ import { TodayWeatherCard } from "./components/TodayWeatherCard";
 import { GetWeahterData, WeatherData } from "./api/WeatherApi";
 
 import "./style/App.css";
+import { CityInput } from "./components/CityInput";
+import { CoordinatesData } from "./api/CoordinatesApi";
 
 function App() {
-  //useEffect(() => {//isviekcia api call ir nusettina state}, []);
-  // Isivykdo kai komponentas yra uzkraunamas arba kai state yra pakeiciamas
-  //
-
   const [weatherData, setWeatherData] = useState<WeatherData | null>();
   const [weatherArrayTimeIndex, setWeatherArrayTimeIndex] = useState<number>(0);
   const [weatherArrayDateIndex, setWeatherArrayDateIndex] = useState<number>(0);
+  const [cityCoordinates, setCityCoordinates] = useState<CoordinatesData>({
+    longitude: 25.28,
+    latitude: 54.69,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       let response = await GetWeahterData();
+
       setWeatherData(response);
 
       let dateNow = new Date();
@@ -32,20 +35,18 @@ function App() {
         "T12:00";
 
       let indexOfToday = response?.hourly.time.indexOf(today) ?? 0;
-      // Get hourly time for this day weather
+
       setWeatherArrayTimeIndex(timeNow - 1);
 
-      // Setting temperature
       setWeatherArrayDateIndex(indexOfToday);
     };
-
-    // Get today
 
     fetchData();
   }, []);
 
   return (
-    <div className="content">
+    <div>
+      <CityInput setData={() => setCityCoordinates} />
       <TodayWeatherCard
         temperature={
           weatherData?.hourly.temperature_2m[weatherArrayTimeIndex] ?? 0
