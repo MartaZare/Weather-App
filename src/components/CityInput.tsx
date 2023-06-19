@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CityCoordinates, CoordinatesData } from "../api/CoordinatesApi";
 
 interface CityInputProps {
-  setData: (arg: CoordinatesData) => void;
+  setCityCoordinates: (arg: CoordinatesData) => void;
 }
 
 export const CityInput = (props: CityInputProps) => {
@@ -10,13 +10,12 @@ export const CityInput = (props: CityInputProps) => {
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
+
     let formatedCity =
       city.toLowerCase().charAt(0).toUpperCase() + city.slice(1);
 
     let result = await CityCoordinates(formatedCity);
-    props.setData(result[0]);
-
-    setCity("");
+    props.setCityCoordinates(result[0]);
   };
 
   return (

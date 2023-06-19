@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { WeatherCard } from "./components/WeatherCard";
 import { TodayWeatherCard } from "./components/TodayWeatherCard";
-import { GetWeahterData, WeatherData } from "./api/WeatherApi";
+import { WeatherData } from "./api/WeatherApi";
 
 import "./style/App.css";
 import { CityInput } from "./components/CityInput";
 import { CoordinatesData } from "./api/CoordinatesApi";
+import CityWeatherData from "./components/CityWeatherData";
 
 function App() {
-  const [weatherData, setWeatherData] = useState<WeatherData | null>();
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [weatherArrayTimeIndex, setWeatherArrayTimeIndex] = useState<number>(0);
   const [weatherArrayDateIndex, setWeatherArrayDateIndex] = useState<number>(0);
   const [cityCoordinates, setCityCoordinates] = useState<CoordinatesData>({
@@ -16,37 +17,16 @@ function App() {
     latitude: 54.69,
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      let response = await GetWeahterData();
-
-      setWeatherData(response);
-
-      let dateNow = new Date();
-      let timeNow = dateNow.getHours();
-
-      let today: string;
-      today =
-        dateNow.getFullYear() +
-        "-0" +
-        (dateNow.getMonth() + 1) +
-        "-" +
-        dateNow.getDate() +
-        "T12:00";
-
-      let indexOfToday = response?.hourly.time.indexOf(today) ?? 0;
-
-      setWeatherArrayTimeIndex(timeNow - 1);
-
-      setWeatherArrayDateIndex(indexOfToday);
-    };
-
-    fetchData();
-  }, []);
+  CityWeatherData(
+    cityCoordinates,
+    setWeatherData,
+    setWeatherArrayTimeIndex,
+    setWeatherArrayDateIndex
+  );
 
   return (
     <div>
-      <CityInput setData={() => setCityCoordinates} />
+      <CityInput setCityCoordinates={setCityCoordinates} />
       <TodayWeatherCard
         temperature={
           weatherData?.hourly.temperature_2m[weatherArrayTimeIndex] ?? 0
