@@ -9,12 +9,14 @@
 }
 
 .weeksCards {
+  margin: 8px;
   width: $space-all;
+  justify-content: center;
   display: flex;
   gap: 16px;
 }
 
-@media only screen and (max-width: 421px) {
+@media only screen and (max-width: 500px) {
   .weeksCards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

@@ -31,12 +31,19 @@
   font-size: 70px;
 }
 
+.today-card > h2 {
+  font-weight: 300;
+  color: $secondary-text-color;
+  font-size: 40px;
+  text-align: center;
+}
+
 .today-card > p {
   font-size: 30px;
   font-weight: 400;
 }
 
-@media only screen and (max-width: 421px) {
+@media only screen and (max-width: 500px) {
   .card {
     width: 6.5em;
     height: 6.5em;

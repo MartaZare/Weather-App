@@ -1,6 +1,7 @@
 export interface CoordinatesData {
   latitude: number;
   longitude: number;
+  name: string;
 }
 
 export async function CityCoordinates(cityName: string) {
@@ -18,15 +19,17 @@ export async function CityCoordinates(cityName: string) {
     );
 
     if (!response.ok) {
-      console.log(await response.json());
       throw new Error(
         "Request failed with status " + response.status + response
       );
     }
 
     const result = (await response.json()) as CoordinatesData[];
-    console.log(result);
-    return result;
+
+    if (result.length === 0) {
+    } else {
+      return result;
+    }
   } catch (error) {
     console.error("Error: ", error);
     throw error;

@@ -17,7 +17,5 @@ export async function GetWeahterData(latitude: string, longitude: string) {
   }
 
   let responseData = (await response.json()) as WeatherData;
-  console.log("WeatherApi responseData: ");
-  console.log(responseData);
   return responseData;
 }

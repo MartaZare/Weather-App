@@ -37,7 +37,9 @@ export default function CityWeatherData(
       let indexOfToday = response?.hourly.time.indexOf(today) ?? 0;
 
       setWeatherArrayTimeIndex(timeNow - 1);
-      setWeatherArrayDateIndex(indexOfToday);
+      setWeatherArrayDateIndex(-indexOfToday);
+      console.log("TIME");
+      console.log(indexOfToday);
     };
 
     fetchData();
